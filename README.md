@@ -13,7 +13,7 @@ CLI for Summarize AWS Billing
 ## Installation
 
 ```
-npm install --global kanjo
+npm install --global kanjo-cli
 ```
 
 
