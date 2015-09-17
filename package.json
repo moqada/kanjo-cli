@@ -1,0 +1,51 @@
+{
+  "name": "kanjo-cli",
+  "description": "CLI for Summarize AWS Billing",
+  "version": "0.0.0",
+  "author": "moqada <moqada@gmail.com>",
+  "bin": {
+    "kanjo": "lib/cli.js"
+  },
+  "bugs": {
+    "url": "https://github.com/moqada/kanjo-cli/issues"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.2.2",
+    "aws-sdk-config-loader": "^0.2.0",
+    "babel-runtime": "^5.8.24",
+    "chalk": "^1.1.1",
+    "cli-table": "^0.3.1",
+    "kanjo": "file:../kanjo",
+    "round-to": "^1.0.0",
+    "yargs": "^3.25.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-eslint": "^4.0.10",
+    "eslint": "^1.4.3",
+    "eslint-config-moqada": "^4.0.1"
+  },
+  "files": [
+    "lib/cli.js"
+  ],
+  "homepage": "https://github.com/moqada/kanjo-cli#readme",
+  "keywords": [
+    "aws",
+    "billing",
+    "cli",
+    "console",
+    "terminal"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moqada/kanjo-cli.git"
+  },
+  "scripts": {
+    "build": "rm -rf lib && babel --out-dir=lib src",
+    "example": "cd example && npm install && npm run kanjo -- --help",
+    "eslint": "eslint src",
+    "test": "npm run eslint && npm run example",
+    "watch": "babel --out-dir=lib --watch src"
+  }
+}

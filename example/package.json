@@ -1,0 +1,14 @@
+{
+  "name": "example",
+  "description": "test",
+  "version": "0.0.0",
+  "author": "moqada <moqada@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "kanjo": "kanjo"
+  },
+  "dependencies": {
+    "kanjo-cli": "file:.."
+  }
+}
