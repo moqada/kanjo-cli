@@ -1,7 +1,7 @@
 {
   "name": "kanjo-cli",
   "description": "CLI for Summarize AWS Billing",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "moqada <moqada@gmail.com>",
   "bin": {
     "kanjo": "lib/cli.js"
