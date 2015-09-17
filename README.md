@@ -63,6 +63,7 @@ Examples:
 
 ## Todo
 
+- [ ] Load account / bucket info from config file
 - [ ] Add tests
 - [ ] Support weekly summary
 - [ ] Support daily summary
