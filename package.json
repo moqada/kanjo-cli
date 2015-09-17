@@ -15,7 +15,7 @@
     "babel-runtime": "^5.8.24",
     "chalk": "^1.1.1",
     "cli-table": "^0.3.1",
-    "kanjo": "file:../kanjo",
+    "kanjo": "^0.1.0",
     "round-to": "^1.0.0",
     "yargs": "^3.25.0"
   },
