@@ -45,7 +45,7 @@
     "build": "rm -rf lib && babel --out-dir=lib src",
     "example": "cd example && npm install && npm run kanjo -- --help",
     "eslint": "eslint src",
-    "test": "npm run eslint && npm run example",
+    "test": "npm run eslint & npm run build && npm run example",
     "watch": "babel --out-dir=lib --watch src"
   }
 }
