@@ -13,9 +13,9 @@ loader(AWS);
 
 
 const argv = yargs
-.usage('Usage: $0 [options] [yyyymm]')
-  .example('$0 --accont=foo --bucket=bar', 'Show charges of current month')
-  .example('$0 --accont=foo --bucket=bar 201507', 'Show charges of 2015/09')
+.usage('Usage: kanjo [options] [yyyymm]')
+  .example('kanjo --accont=foo --bucket=bar', 'Show charges of current month')
+  .example('kanjo --accont=foo --bucket=bar 201507', 'Show charges of 2015/09')
   .option('f', {
     alias: 'format',
     describe: 'Set output format',
