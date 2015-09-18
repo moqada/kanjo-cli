@@ -50,7 +50,7 @@ Options:
 
 Examples:
   kanjo --accont=foo --bucket=bar         Show charges of current month
-  kanjo --accont=foo --bucket=bar 201507  Show charges of 2015/09
+  kanjo --accont=foo --bucket=bar 201507  Show charges of July, 2015
 ```
 
 ![](http://i.imgur.com/1ZGtGtw.png)
