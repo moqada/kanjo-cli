@@ -1,19 +1,25 @@
 #!/usr/bin/env node
+import fs from 'fs';
+import path from 'path';
+
 import AWS from 'aws-sdk';
 import chalk from 'chalk';
+import debugModule from 'debug';
 import Kanjo from 'kanjo';
 import Table from 'cli-table';
 import loader from 'aws-sdk-config-loader';
 import roundTo from 'round-to';
+import toml from 'toml';
+import osHomedir from 'os-homedir';
 import yargs from 'yargs';
 
 import pkg from '../package.json';
 
-loader(AWS);
+const debug = debugModule('kanjo:cli');
 
 
-const argv = yargs
-.usage('Usage: kanjo [options] [yyyymm]')
+const args = yargs
+  .usage('Usage: kanjo [options] [yyyymm]')
   .example('kanjo --accont=foo --bucket=bar', 'Show charges of current month')
   .example('kanjo --accont=foo --bucket=bar 201507', 'Show charges of July, 2015')
   .option('f', {
@@ -22,26 +28,36 @@ const argv = yargs
     choices: ['table', 'text'],
     'default': 'table'
   })
+  .option('p', {
+    alias: 'profile',
+    describe: 'Set profile name (default: default)',
+    'default': () => {
+      return process.env.AWS_PROFILE || 'default';
+    },
+    type: 'string'
+  })
+  .option('c', {
+    alias: 'config',
+    describe: 'Set config file path loading options',
+    'default': path.join(osHomedir(), '.kanjo'),
+    type: 'string'
+  })
   .option('account', {
     describe: 'Set account id for billing',
-    demand: true,
     type: 'string'
   })
   .option('bucket', {
     describe: 'Set S3 bucket name storeing billing csv',
-    demand: true,
     type: 'string'
   })
   .option('region', {
     describe: 'Set S3 region name storeing billing csv',
-    'default': AWS.config.region,
     type: 'string'
   })
   .help('help')
   .version(pkg.version)
   .detectLocale(false)
-  .wrap(null)
-  .argv;
+  .wrap(null);
 
 
 /**
@@ -159,6 +175,25 @@ function error(err) {
 
 
 /**
+ * load options from config file and merge cli options
+ *
+ * @param {Object} yargsArg yarg object
+ * @return {Object}
+ */
+function loadDefaultOptions(yargsArg) {
+  const argv = yargsArg.argv;
+  let defaults = null;
+  try {
+    const configs = toml.parse(fs.readFileSync(argv.config));
+    defaults = configs[argv.profile] || {};
+  } catch (err) {
+    defaults = {};
+  }
+  return Object.assign({}, yargsArg.default(defaults).argv);
+}
+
+
+/**
  * execute
  *
  * @param {string} yyyymm target month
@@ -166,10 +201,10 @@ function error(err) {
  */
 function execute(yyyymm, options) {
   const date = yyyymm ? parseDateStr(yyyymm) : new Date();
-  const config = Object.assign({}, options, {
-    region: options.region || undefined
-  });
-  new Kanjo(config)
+  debug('date', date);
+  debug('options', options);
+  loader(AWS, {profile: options.profile});
+  new Kanjo(options)
     .fetch(date.getFullYear(), date.getMonth() + 1).then(report => {
       output(report, options.format);
     }).catch(err => error(err));
@@ -177,6 +212,7 @@ function execute(yyyymm, options) {
 
 
 try {
+  const argv = loadDefaultOptions(args);
   execute(argv._.length > 0 ? argv._[0] : null, argv);
 } catch (err) {
   error(err);

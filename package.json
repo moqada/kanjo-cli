@@ -11,12 +11,15 @@
   },
   "dependencies": {
     "aws-sdk": "^2.2.2",
-    "aws-sdk-config-loader": "^0.2.0",
+    "aws-sdk-config-loader": "^0.3.1",
     "babel-runtime": "^5.8.24",
     "chalk": "^1.1.1",
     "cli-table": "^0.3.1",
+    "debug": "^2.2.0",
     "kanjo": "^0.1.0",
+    "os-homedir": "^1.0.1",
     "round-to": "^1.0.0",
+    "toml": "^2.3.0",
     "yargs": "^3.25.0"
   },
   "devDependencies": {
