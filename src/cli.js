@@ -11,12 +11,15 @@ import loader from 'aws-sdk-config-loader';
 import roundTo from 'round-to';
 import toml from 'toml';
 import osHomedir from 'os-homedir';
+import updateNotifier from 'update-notifier';
 import yargs from 'yargs';
 
 import pkg from '../package.json';
 
 const debug = debugModule('kanjo:cli');
 
+
+updateNotifier({pkg}).notify();
 
 const args = yargs
   .usage('Usage: kanjo [options] [yyyymm]')
@@ -208,6 +211,7 @@ function execute(yyyymm, options) {
   new Kanjo(options)
     .fetch(date.getFullYear(), date.getMonth() + 1).then(report => {
       output(report, options.output);
+      process.exit();
     }).catch(err => error(err));
 }
 
