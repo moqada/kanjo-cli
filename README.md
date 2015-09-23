@@ -19,6 +19,8 @@ npm install --global kanjo-cli
 
 ## Configuration
 
+### AWS Credentials & Region
+
 You can create the credential file yourself. By default, its location is at `~/.aws/credentials`
 
 ```
@@ -34,6 +36,26 @@ You may also want to set a default region. This can be done in the configuration
 region = us-east-1
 ```
 
+More detailed configurations, please see following articles.
+
+- [Configuring the SDK in Node.js — AWS SDK for JavaScript](http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/node-configuring.html).
+- [Configuring the AWS Command Line Interface - AWS Command Line Interface](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
+
+
+### Default options
+
+You can create the config file to omit options for CLI.
+By default, its location is at `~/.kanjo`.
+
+```toml
+[default]
+account = "BILLING_ACCOUNT_ID"
+bucket = "S3_BUCKET_NAME_STOREING_BLLING_CSV"
+```
+
+You can write options per profile similar to AWS credentials and config.
+But, Format of this file is TOML.
+
 
 ## Usage
 
@@ -41,16 +63,19 @@ region = us-east-1
 Usage: kanjo [options] [yyyymm]
 
 Options:
-  -f, --format  Set output format  [choices: "table", "text"] [default: "table"]
-  --account     Set account id for billing  [string] [required]
-  --bucket      Set S3 bucket name storeing billing csv  [string] [required]
-  --region      Set S3 region name storeing billing csv  [string] [default: "ap-northeast-1"]
-  --help        Show help  [boolean]
-  --version     Show version number  [boolean]
+  -o, --output   Set output format  [choices: "table", "text"] [default: "table"]
+  -p, --profile  Set profile name (default: default)  [string] [default: "default"]
+  -c, --config   Set config file path loading options  [string] [default: "$HOME/.kanjo"]
+  --account      Set account id for billing  [string]
+  --bucket       Set S3 bucket name storeing billing csv  [string]
+  --region       Set S3 region name storeing billing csv  [string]
+  --help         Show help  [boolean]
+  --version      Show version number  [boolean]
 
 Examples:
-  kanjo --accont=foo --bucket=bar         Show charges of current month
-  kanjo --accont=foo --bucket=bar 201507  Show charges of July, 2015
+  kanjo                                               Show charges of current month
+  kanjo 201507                                        Show charges of July, 2015
+  kanjo --accont=foo --bucket=bar --region=us-east-1  No config file
 ```
 
 ![](http://i.imgur.com/1ZGtGtw.png)
