@@ -74,7 +74,7 @@ Examples:
 [npm-url]: https://www.npmjs.com/package/kanjo-cli
 [npm-image]: https://img.shields.io/npm/v/kanjo-cli.svg?style=flat-square
 [npm-download-url]: https://www.npmjs.com/package/kanjo-cli
-[npm-download-image]: https://img.shields.io/npm/dm/kanjo-cli.svg?style=flat-square
+[npm-download-image]: https://img.shields.io/npm/dt/kanjo-cli.svg?style=flat-square
 [travis-url]: https://travis-ci.org/moqada/kanjo-cli
 [travis-image]: https://img.shields.io/travis/moqada/kanjo-cli.svg?style=flat-square
 [daviddm-url]: https://david-dm.org/moqada/kanjo-cli
