@@ -20,8 +20,9 @@ const debug = debugModule('kanjo:cli');
 
 const args = yargs
   .usage('Usage: kanjo [options] [yyyymm]')
-  .example('kanjo --accont=foo --bucket=bar', 'Show charges of current month')
-  .example('kanjo --accont=foo --bucket=bar 201507', 'Show charges of July, 2015')
+  .example('kanjo', 'Show charges of current month')
+  .example('kanjo 201507', 'Show charges of July, 2015')
+  .example('kanjo --accont=foo --bucket=bar --region=us-east-1', 'No config file')
   .option('o', {
     alias: 'output',
     describe: 'Set output format',
