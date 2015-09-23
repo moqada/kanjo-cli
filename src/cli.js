@@ -22,8 +22,8 @@ const args = yargs
   .usage('Usage: kanjo [options] [yyyymm]')
   .example('kanjo --accont=foo --bucket=bar', 'Show charges of current month')
   .example('kanjo --accont=foo --bucket=bar 201507', 'Show charges of July, 2015')
-  .option('f', {
-    alias: 'format',
+  .option('o', {
+    alias: 'output',
     describe: 'Set output format',
     choices: ['table', 'text'],
     'default': 'table'
@@ -206,7 +206,7 @@ function execute(yyyymm, options) {
   loader(AWS, {profile: options.profile});
   new Kanjo(options)
     .fetch(date.getFullYear(), date.getMonth() + 1).then(report => {
-      output(report, options.format);
+      output(report, options.output);
     }).catch(err => error(err));
 }
 
