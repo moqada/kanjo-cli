@@ -27,7 +27,7 @@
     "babel": "^5.8.23",
     "babel-eslint": "^4.0.10",
     "eslint": "^1.5.1",
-    "eslint-config-moqada": "^7.0.0"
+    "eslint-config-moqada": "^8.0.0"
   },
   "files": [
     "lib/cli.js"
