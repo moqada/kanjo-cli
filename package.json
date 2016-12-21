@@ -15,7 +15,7 @@
     "babel-runtime": "^6.0.12",
     "chalk": "^1.1.1",
     "cli-table": "^0.3.1",
-    "debug": "^2.2.0",
+    "debug": "^2.5.0",
     "kanjo": "^0.2.0",
     "os-homedir": "^1.0.1",
     "round-to": "^1.0.0",
