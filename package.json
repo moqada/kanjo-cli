@@ -20,7 +20,7 @@
     "os-homedir": "^1.0.1",
     "round-to": "^1.0.0",
     "toml": "^2.3.0",
-    "update-notifier": "^1.0.0",
+    "update-notifier": "^2.1.0",
     "yargs": "^7.1.0"
   },
   "devDependencies": {
