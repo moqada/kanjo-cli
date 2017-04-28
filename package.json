@@ -10,7 +10,7 @@
     "url": "https://github.com/moqada/kanjo-cli/issues"
   },
   "dependencies": {
-    "aws-sdk": "^2.2.31",
+    "aws-sdk": "^2.48.0",
     "aws-sdk-config-loader": "^1.0.0",
     "babel-runtime": "^6.0.12",
     "chalk": "^1.1.1",
