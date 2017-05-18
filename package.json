@@ -18,10 +18,10 @@
     "debug": "^2.2.0",
     "kanjo": "^0.2.0",
     "os-homedir": "^1.0.1",
-    "round-to": "^1.0.0",
+    "round-to": "^2.0.0",
     "toml": "^2.3.0",
-    "update-notifier": "^1.0.0",
-    "yargs": "^7.1.0"
+    "update-notifier": "^2.1.0",
+    "yargs": "^8.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.8.0",
